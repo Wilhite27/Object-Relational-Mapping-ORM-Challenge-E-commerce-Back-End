@@ -19,7 +19,7 @@ ProductTag.init(
       id: Product.id
     },
     tag_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER, 
       id: Tag.id
     },
   

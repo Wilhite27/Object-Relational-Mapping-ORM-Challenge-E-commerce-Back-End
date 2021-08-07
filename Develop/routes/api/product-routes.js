@@ -23,10 +23,10 @@ router.get('/', (req, res) => {
 
 // get one product
 router.get('/:id', (req, res) => {
-  Product.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password
+  Product.findOne({
+    where: {
+      id: req.params.id
+    },
   })
     .then(products => res.json(products))
     .catch(err => {
@@ -84,7 +84,7 @@ router.put('/:id', (req, res) => {
   })
     .then((product) => {
       // find all associated tags from ProductTag
-      return ProductTag.findAll({ where: { product_tag: req.params.id } });
+      return ProductTag.findAll({ where: { product_tag: req.params.product_tag } });
     })
     .then((productTags) => {
       // get list of current tag_ids
